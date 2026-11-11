@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baara Muso | Restaurant à Bamako</title>
+    <meta name="description" content="Baara Muso, restaurant à Bamako : découvrez nos spécialités africaines, notre menu et contactez-nous.">
+    <style>
+:root {
+    --brown: #2b1810;
+    --terracotta: #c4552b;
+    --gold: #e0a526;
+    --cream: #fbf5ea;
+    --text: #3a2a22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------- HEADER ---------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 5%;
+    background: rgba(43, 24, 16, 0.95);
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+nav a:hover {
+    opacity: 1;
+    color: var(--gold);
+}
+
+.nav-button {
+    background: var(--terracotta);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.nav-button:hover {
+    background: var(--gold);
+    color: var(--brown);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    color: #fff;
+    background:
+        linear-gradient(rgba(43, 24, 16, 0.65), rgba(43, 24, 16, 0.75)),
+        url("https://images.unsplash.com/photo-1547592180-85f173990554?w=1600") center / cover no-repeat;
+}
+
+.hero-content {
+    max-width: 640px;
+}
+
+.subtitle {
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero p:not(.subtitle) {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.92;
+}
+
+.main-button {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.main-button:hover {
+    background: var(--gold);
+    color: var(--brown);
+    transform: translateY(-2px);
+}
+
+/* ---------- SECTIONS ---------- */
+section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--brown);
+    margin-bottom: 16px;
+}
+
+.about,
+.menu,
+.contact {
+    padding: 90px 5%;
+    text-align: center;
+}
+
+.about p:not(.subtitle),
+.contact p:not(.subtitle) {
+    max-width: 640px;
+    margin: 0 auto 10px;
+}
+
+.about {
+    background: #fff;
+}
+
+/* ---------- MENU ---------- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+    max-width: 900px;
+    margin: 36px auto 0;
+}
+
+.dish {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 6px 20px rgba(43, 24, 16, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.dish:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(43, 24, 16, 0.15);
+}
+
+.dish img {
+    width: 100%;
+    height: clamp(100px, 14vw, 130px);
+    object-fit: cover;
+}
+
+.dish-body {
+    padding: 12px 14px 16px;
+}
+
+.dish h3 {
+    color: var(--brown);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.dish p {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--terracotta);
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* ---------- CONTACT ---------- */
+.contact {
+    background: var(--brown);
+    color: #fff;
+}
+
+.contact h2 {
+    color: #fff;
+}
+
+.contact-list {
+    list-style: none;
+    margin: 24px 0;
+}
+
+.contact-list li {
+    margin-bottom: 6px;
+}
+
+.contact-list a:hover {
+    color: var(--gold);
+}
+
+.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+.whatsapp {
+    background: #25a244;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #1b0f09;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 28px 5%;
+    font-size: 0.9rem;
+}
+
+/* ---------- PETITS ÉCRANS : 2 plats par ligne ---------- */
+@media (max-width: 520px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .dish img {
+        height: 95px;
+    }
+
+    .dish-body {
+        padding: 10px 10px 14px;
+    }
+
+    .dish h3 {
+        font-size: 0.9rem;
+    }
+
+    .dish p {
+        font-size: 0.78rem;
+    }
+
+    .price {
+        font-size: 0.78rem;
+        padding: 3px 10px;
+    }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 820px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--brown);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    nav.open {
+        max-height: 320px;
+    }
+
+    nav a {
+        padding: 16px 5%;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+</style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="#accueil" class="logo">BAARA <span>MUSO</span></a>
+
+        <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="main-nav">
+            <a href="#accueil">Accueil</a>
+            <a href="#apropos">Notre histoire</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#menu" class="nav-button">Découvrir le menu</a>
+    </header>
+
+    <main>
+        <!-- ACCUEIL -->
+        <section class="hero" id="accueil">
+            <div class="hero-content">
+                <p class="subtitle">SAVEURS • CULTURE • PARTAGE</p>
+                <h1>Le goût de l'Afrique dans votre assiette.</h1>
+                <p>
+                    Découvrez une expérience culinaire inspirée
+                    des saveurs et des traditions africaines.
+                </p>
+                <a href="#menu" class="main-button">Explorer notre menu</a>
+            </div>
+        </section>
+
+        <!-- NOTRE HISTOIRE -->
+        <section class="about" id="apropos">
+            <p class="subtitle">BIENVENUE CHEZ BAARA MUSO</p>
+            <h2>Une expérience pleine de saveurs</h2>
+            <p>
+                Bienvenue dans notre univers culinaire.
+                Découvrez nos plats, notre ambiance et notre
+                passion pour la cuisine.
+            </p>
+        </section>
+
+        <!-- MENU -->
+        <section class="menu" id="menu">
+            <p class="subtitle">NOS SPÉCIALITÉS</p>
+            <h2>Notre menu</h2>
+
+            <div class="menu-grid">
+
+                <article class="dish">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=700" alt="Riz aux légumes servi dans un plat" loading="lazy">
+                    <div class="dish-body">
+                        <h3>Riz aux légumes</h3>
+                        <p>Un délicieux plat gourmand.</p>
+                        <span class="price">1 500 FCFA</span>
+                    </div>
+                </article>
+
+                <article class="dish">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=700" alt="Spécialité africaine mijotée" loading="lazy">
+                    <div class="dish-body">
+                        <h3>Spécialité africaine</h3>
+                        <p>Une recette pleine de saveurs.</p>
+                        <span class="price">2 000 FCFA</span>
+                    </div>
+                </article>
+
+                <article class="dish">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700" alt="Plat maison frais et coloré" loading="lazy">
+                    <div class="dish-body">
+                        <h3>Plat maison</h3>
+                        <p>Une expérience à découvrir.</p>
+                        <span class="price">2 000 FCFA</span>
+                    </div>
+                </article>
+
+                <article class="dish">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=700" alt="Plat traditionnel africain" loading="lazy">
+                    <div class="dish-body">
+                        <h3>Plat traditionnel</h3>
+                        <p>Une délicieuse spécialité à découvrir.</p>
+                        <span class="price">2 500 FCFA</span>
+                    </div>
+                </article>
+
+                <article class="dish">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700" alt="Repas gourmand" loading="lazy">
+                    <div class="dish-body">
+                        <h3>Plat gourmand</h3>
+                        <p>Une recette pleine de saveurs.</p>
+                        <span class="price">2 500 FCFA</span>
+                    </div>
+                </article>
+
+                <article class="dish">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=700" alt="Spécialité de la maison" loading="lazy">
+                    <div class="dish-body">
+                        <h3>Spécialité maison</h3>
+                        <p>Une découverte culinaire.</p>
+                        <span class="price">3 000 FCFA</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact" id="contact">
+            <p class="subtitle">RETROUVONS-NOUS</p>
+            <h2>Venez nous rendre visite</h2>
+            <p>Retrouvez-nous à Bamako.</p>
+
+            <ul class="contact-list">
+                <li><strong>Adresse :</strong> [à compléter]</li>
+                <li><strong>Téléphone :</strong> <a href="tel:+22300000000">[+223 00 00 00 00]</a></li>
+                <li><strong>Horaires :</strong> [à compléter]</li>
+            </ul>
+
+            <div class="contact-buttons">
+                <a href="tel:+22300000000" class="main-button">Appeler</a>
+                <a href="https://wa.me/22300000000" class="main-button whatsapp" target="_blank" rel="noopener">Commander sur WhatsApp</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Baara Muso. Tous droits réservés.</p>
+        <p>Un voyage au cœur des saveurs africaines.</p>
+    </footer>
+
+    <script>
+// Menu mobile
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.getElementById("main-nav");
+
+if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Ferme le menu après un clic sur un lien
+    nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            nav.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+        });
+    });
+}
+</script>
+</body>
+</html>
